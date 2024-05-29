@@ -1,0 +1,768 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Header styles */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: block; /* Ensure the logo is displayed as a block element */
+}
+
+.logo img {
+  max-width: 40%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .logo {
+    display: none; /* Hide the logo on screens smaller than 768px */
+  }
+}
+
+/* CSS Variables */
+:root {
+  --color1: #ffd700; /* white */
+  --color2: #333; /* dark grey */
+}
+
+.nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    position: relative;
+    background-color: var(--color2);
+    padding: 12px 20px;
+}
+
+.menu {display: flex;}
+.menu li {padding-left: 30px;}
+.menu li a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color1);
+    text-align: center;
+    transition: 0.15s ease-in-out;
+    position: relative;
+    text-transform: uppercase;
+}
+.menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color1);
+    transition: 0.15s ease-in-out;
+}
+.menu li a:hover:after {width: 100%;}
+.open-menu , .close-menu {
+    position: absolute;
+    color: var(--color1);
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: none;
+}
+.open-menu {
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+.close-menu {
+    top: 20px;
+    right: 20px;
+}
+
+#check {display: none;}
+@media(max-width: 768px){
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 100;
+        background-color: var(--color2);
+        transition: all 0.2s ease-in-out;
+    }
+    .menu li {margin-top: 40px;}
+    .menu li a {padding: 10px;}
+    .open-menu , .close-menu {display: block;}
+    #check:checked ~ .menu {right: 0;}
+}
+
+/* Navigation Menu */
+.nav-links {
+  display: block; /* Display navigation links by default */
+}
+
+/* Media query for small screens */
+@media only screen and (max-width: 768px) {
+  .nav-links {
+      display: none; /* Hide navigation links on small screens */
+      position: absolute; /* Position nav links below burger menu */
+      top: 100%; /* Place nav links below burger menu */
+      left: 0; /* Align nav links to the left */
+      background-color: #333; /* Set background color for nav links */
+      width: 100%; /* Set full width for nav links */
+  }
+
+  /* Adjust the layout of nav links on small screens */
+  .nav-links ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-align: center; /* Center align nav links */
+  }
+
+  .nav-links ul li {
+      margin-bottom: 10px; /* Add some space between links */
+  }
+}
+
+.menu-container nav ul {
+  list-style: none;
+  display: flex;
+}
+
+.menu-container nav ul li {
+  margin-right: 20px;
+}
+
+.menu-container nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
+.menu-container nav ul li a:hover {
+  color: #ffd700;
+}
+
+/* Main styles */
+main {
+  padding: 20px;
+  background-image: url('img/back-7.png');
+  background-size: cover;
+  background-position: center;
+  min-height: calc(85vh - 85px); /* Adjust the height based on your header's height */
+  position: relative; /* Added */
+}
+
+/* Logo on top of background image */
+.logo-mutt {
+  position: absolute;
+  top: 10%; /* Adjust as needed */
+  left: 60%; /* Adjust as needed */
+  z-index: 1;
+  max-width: 100%; /* Make the image responsive */
+  height: auto;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+  .logo-mutt {
+      position: relative; /* Change position to relative */
+      top: auto;
+      left: auto;
+      margin-top: 180px; /* Add margin to separate from the headings */
+      max-width: 90%; /* Reduce the max-width for smaller screens */
+      left: 10%; /* Adjust the position to align with other content */
+  }
+
+  /* Additional rule to make logo smaller on smaller screens */
+  .logo-mutt img {
+      max-width: 90%; /* Adjust the max-width as needed */
+      height: auto;
+  }
+}
+
+/* Shake animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+/* Apply shake animation to logo on hover */
+.logo-mutt img:hover {
+  animation: shake 0.8s ease-in-out; /* Apply shake animation */
+}
+
+/* Heading text on top of background image */
+.heading-text {
+  position: absolute;
+  top: 15%; /* Adjust as needed */
+  left: 8%; /* Adjust as needed */
+  z-index: 1;
+  color: #f2a034;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6); /* Dark shadow */
+  font-size: 12vw; /* Adjust font size */
+  font-weight: bold; /* Make text bolder */
+}
+
+/* Heading intro text */
+.heading-intro {
+  position: absolute;
+  top: 35%; /* Adjust as needed */
+  left: 13%; /* Adjust as needed */
+  z-index: 1;
+  color: #3b2622;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6); /* Dark shadow */
+  font-size: 8vw; /* Adjust font size */
+  font-weight: bold; /* Make text bolder */
+}
+
+/* Heading bones text */
+.heading-bones {
+  position: absolute;
+  top: 54%; /* Adjust as needed */
+  left: 15%; /* Adjust as needed */
+  z-index: 1;
+  color: #f0f0f0;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6); /* Dark shadow */
+  font-size: 1.8vw; /* Adjust font size */
+  font-weight: regular; /* Make text bolder */
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+  .heading-text,
+  .heading-intro,
+  .heading-bones {
+      display: none; /* Hide the elements */
+  }
+}
+
+.buy-token-button {
+  display: block;
+  width: 200px; /* Adjust width as needed */
+  padding: 10px;
+  margin: 480px auto 0 400px; /* Adjust margin as needed */
+  text-align: center;
+  background-color: #333; /* Adjust background color as needed */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.buy-token-button:hover {
+  background-color: #555; /* Adjust hover color as needed */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .buy-token-button {
+      width: 150px; /* Adjust width for smaller screens */
+      margin: 20px auto; /* Center the button horizontally */
+  }
+}
+
+#dexscreener-embed {
+  position: relative;
+  width: 100%;
+  max-width: 100%; /* Adjust max-width as needed */
+  margin: 0 auto; /* Center the element horizontally */
+  padding-bottom: 125%;
+}
+
+@media (min-width: 1200px) {
+  #dexscreener-embed {
+  padding-bottom: 65%;  
+  }
+
+}
+
+#dexscreener-embed iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+/* CSS for screens larger than 768px */
+.featured-section {
+  display: flex;
+  justify-content: center; /* Center the featured content */
+  align-items: flex-start;
+  padding-top: 50px;
+  padding-left: 400px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.featured-content {
+  width: 70%; /* Adjust width as needed */
+  padding: 30px; /* Adjust padding for more space */
+  background-color: #dbdbdb; /* Set background color */
+  border-radius: 10px; /* Add rounded edges */
+}
+
+.featured-content h2 {
+  margin-bottom: 10px;
+}
+
+.featured-content article {
+  margin-bottom: 20px;
+}
+
+/* CSS for screens larger than 768px */
+.sidebar-section {
+  width: 30%; /* Adjust width as needed */
+  padding-top: 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  background-color: transparent; /* Set background color to white */
+  border-radius: 10px; /* Add rounded edges */
+}
+
+.sidebar-section .sidebar {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #dbdbdb; /* Set background color */
+  border-radius: 10px; /* Add rounded edges */
+}
+
+.sidebar-section .sidebar h2 {
+  margin-bottom: 10px;
+}
+
+.sidebar-section .sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-section .sidebar ul li {
+  margin-bottom: 10px; /* Adjust margin between list items */
+  padding-left: 20px; /* Add left padding to list items */
+  position: relative; /* Set position to relative for pseudo-element */
+}
+
+.sidebar-section .sidebar ul li::before {
+  content: "\2022"; /* Unicode character for bullet point */
+  position: absolute;
+  left: 0;
+  color: #333; /* Adjust color of bullet point */
+}
+
+.sidebar-section .sidebar ul li a {
+  text-decoration: none; /* Remove default underline */
+  color: black; /* Set link color to black */
+  font-weight: none; /* Make the text bold */
+}
+
+.sidebar-section .sidebar ul li a:hover {
+  color: #f2a034; /* Change color on hover */
+}
+
+.sidebar-section .banner img {
+  width: 100%;
+  padding-bottom: 30px;
+  height: auto;
+}
+
+/* CSS for screens smaller than 768px */
+@media (max-width: 768px) {
+  .featured-section {
+    flex-direction: column; /* Stack content vertically */
+    align-items: none; /* Center align content */
+    padding-left: 0px;
+  }
+  
+  .featured-content {
+    width: 100%; /* Occupy full width */
+    padding: 0 20px; /* Add padding to the sides */
+  }
+  
+  .sidebar {
+    display: none; /* Hide the sidebar on smaller screens */
+  }
+}
+
+/* Tokenomics section */
+.tokenomics-section {
+  margin-top: 20px;
+}
+
+.section-heading {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-align: none;
+}
+
+.tokenomics-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tokenomics-heading,
+.tokenomics-value {
+  font-size: 28px; /* Adjust font size as needed */
+}
+
+.tokenomics-heading {
+  font-weight: none;
+  padding-left: 0px;
+}
+
+.tokenomics-value {
+  font-weight: bold;
+  padding-right: 400px;
+  color: #f2a034; /* Change color on hover */
+  
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 24px; /* Adjust font size for smaller screens */
+  }
+  
+  .tokenomics-heading,
+  .tokenomics-value {
+    font-size: 20px; /* Adjust font size for smaller screens */
+  }
+  
+  .tokenomics-value {
+    padding-right: 0; /* Remove padding for smaller screens */
+  }
+}
+
+/* Terms & Conditions section */
+.terms {
+  margin-top: 20px; /* Adjust margin as needed */
+  padding: 10px; /* Adjust padding as needed */
+  background-color: #dbdbdb; /* Background color */
+  border: 1px solid #ccc; /* Border color and thickness */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.terms h3 {
+  color: #333; /* Heading color */
+  font-size: 1em; /* Heading font size (smaller) */
+  font-style: italic; /* Italic font style */
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.terms p {
+  color: #666; /* Paragraph text color */
+  font-size: 0.9em; /* Paragraph font size (smaller) */
+  line-height: 1.4; /* Paragraph line height */
+  font-style: italic; /* Italic font style */
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .featured-section {
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+
+  .featured-content {
+      padding: 20px;
+  }
+}
+
+/* Getting Started section styles */
+.getting-started {
+  padding: 20px;
+  background-color: #ffffff; /* Set background color */
+  display: flex;
+  align-items: center;
+}
+
+.getting-started-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto;
+}
+
+.getting-started-text {
+  width: 50%; /* Adjust as needed */
+  padding-right: 20px; /* Adjust spacing between text and image */
+}
+
+.getting-started-text h2 {
+  font-size: 36px; /* Adjust heading size as needed */
+  margin-bottom: 10px;
+}
+
+.getting-started-text p {
+  font-size: 16px; /* Adjust text size as needed */
+}
+
+.getting-started-text button {
+  padding: 10px 20px; /* Adjust button padding as needed */
+  background-color: #333; /* Adjust button color as needed */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px; /* Adjust button font size as needed */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.getting-started-text button:hover {
+  background-color: #555; /* Adjust hover color as needed */
+}
+
+.getting-started-image {
+  width: 50%; /* Adjust as needed */
+}
+
+.getting-started-image img {
+  width: 100%;
+  height: auto;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .getting-started {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .getting-started-content {
+      flex-direction: column;
+  }
+
+  .getting-started-text,
+  .getting-started-image {
+      width: 100%;
+      padding: 0;
+  }
+}
+
+.guide-heading {
+  padding: 20px;
+  background-color: #f0f0f0; /* Set background color */
+  /* Adjust background color as needed */
+  display: flex;
+  align-items: center;
+}
+
+.guide-heading h3 {
+  font-size: 36px; /* Adjust heading size as needed */
+  padding-left: 330px;
+  margin-bottom: 10px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .guide-heading h3 {
+      padding-left: 0; /* Remove left padding */
+      text-align: center; /* Center align the text */
+  }
+}
+
+/* Guide section styles */
+.guide {
+  padding: 20px; /* Add padding to the guide section */
+  display: flex;
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+  justify-content: space-between;
+}
+
+/* Guide column styles */
+.guide-column {
+  width: calc(33.33% - 20px); /* Set width for each column with spacing */
+  margin-bottom: 20px; /* Add bottom margin for spacing between columns */
+  background-color: #ffefbd; /* Adjust background color as needed */
+  padding: 20px;
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.guide-column h3 {
+  font-size: 20px; /* Adjust title font size as needed */
+  margin-bottom: 10px;
+}
+
+.guide-column p {
+  font-size: 16px; /* Adjust text font size as needed */
+  margin-bottom: 15px;
+}
+
+.guide-column button {
+  padding: 10px 20px; /* Adjust button padding as needed */
+  background-color: #333; /* Adjust button color as needed */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px; /* Adjust button font size as needed */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .guide-column {
+    width: 100%; /* Set width to 100% for single column on smaller screens */
+  }
+}
+
+/* Community area styles */
+.community-area {
+  background-color: #ffd700;
+  padding: 20px 0;
+  text-align: center; /* Center align content */
+}
+
+.community-title h2 {
+  color: #333;
+  font-size: 36px;
+}
+
+.social-icons {
+  margin-top: 20px; /* Add top margin for spacing */
+  display: flex; /* Display social icons in-line */
+  justify-content: center; /* Center align social icons horizontally */
+}
+
+.social-icons a {
+  margin: 0 10px; /* Add horizontal margin for spacing */
+}
+
+.social-icons img {
+  width: 40px; /* Adjust the width of social icons */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.community-links {
+  margin-top: 20px; /* Add top margin for spacing */
+}
+
+.community-links p {
+  margin: 10px 0;
+}
+
+.community-links p.token-address {
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .social-icons {
+    flex-wrap: wrap; /* Allow social icons to wrap to next line */
+  }
+
+  .social-icons a {
+    margin: 10px; /* Add margin around each social icon */
+  }
+
+  .social-icons img {
+    width: 40px; /* Adjust the width of social icons */
+  }
+}
+
+/* Footer container styles */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow columns to wrap to next line */
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333; /* Set background color */
+  padding: 20px; /* Add padding */
+}
+
+/* Footer column styles */
+.footer-column {
+  flex: 1;
+  color: #fff; /* Set text color to white */
+  text-align: left; /* Align text to the left */
+  margin-bottom: 20px; /* Add bottom margin for spacing */
+}
+
+.footer-column h4 {
+  font-size: 18px; /* Set title font size */
+  margin-bottom: 10px; /* Add spacing below title */
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 5px; /* Add spacing between list items */
+}
+
+.footer-column ul li a {
+  color: #fff; /* Set link color to white */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Add transition effect */
+}
+
+.footer-column ul li a:hover {
+  color: #ffd700; /* Change link color on hover */
+}
+
+/* Footer logo styles */
+.footer-logo {
+  flex: 1; /* Take up full width */
+  max-width: 100%; /* Ensure logo doesn't exceed container width */
+  margin-bottom: 20px; /* Add bottom margin for spacing */
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Stack columns vertically */
+  }
+
+  .footer-column {
+    width: 100%; /* Set column width to full width */
+    margin-bottom: 0; /* Remove bottom margin */
+    text-align: center; /* Center-align text */
+  }
+
+  .footer-logo {
+    margin-bottom: 20px; /* Add bottom margin for spacing */
+  }
+}
